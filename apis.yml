@@ -1,0 +1,58 @@
+aid: by-miles
+url: https://raw.githubusercontent.com/api-evangelist/by-miles/refs/heads/main/apis.yml
+name: By Miles
+kind: company
+description: >-
+  By Miles is a London-based insurtech that pioneered pay-by-mile motor
+  insurance in the United Kingdom, founded in 2016 for low-mileage drivers who cover
+  under roughly 7,000 miles a year. Its single line of business is UK private motor
+  (personal lines property and casualty), priced as a fixed annual premium covering
+  the parked car plus a per-mile charge for the distance actually driven. Mileage is
+  measured either by the OBD-II "Miles Tracker" telematics dongle or, on its
+  "connect" trackerless policies, by pulling odometer data directly from the
+  manufacturer's connected-car platform after the driver links a Tesla, Ford or
+  Mercedes-Benz account. By Miles was acquired by Direct Line Group in April 2023 and,
+  following Aviva's acquisition of Direct Line Group, has been wound down — it stopped
+  quoting new business and, from 6 January 2026, stopped offering renewal quotes to
+  existing customers. Its API posture is that of a pure API CONSUMER, not a producer:
+  it was the first UK insurtech directly authorised by the FCA as an AISP/PISP to
+  consume Open Banking APIs (January 2020), and it consumes OEM connected-car APIs for
+  mileage, but it publishes no public self-serve developer portal, no reference
+  documentation, no OpenAPI, no Postman collection and no webhook catalogue. The only
+  integration surface is a partnerships email address and a private AWS API Gateway
+  host serving its own mobile app, so this record is a partner-gated stub by design.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Insurance
+- United Kingdom
+- Insurtech
+- Property and Casualty
+- Motor Insurance
+- Usage Based Insurance
+- Telematics
+- Connected Car
+- Direct to Consumer
+- Open Banking
+- No Public API
+created: '2026-07-25'
+modified: '2026-07-25'
+specificationVersion: '0.19'
+apis: []
+common:
+- type: Website
+  url: https://www.bymiles.co.uk/
+- type: Blog
+  url: https://www.bymiles.co.uk/insure/magazine/
+- type: SupportCenter
+  url: https://help.bymiles.co.uk/hc/en-us
+- type: Partners
+  url: https://www.bymiles.co.uk/partners
+- type: PrivacyPolicy
+  url: https://www.bymiles.co.uk/privacy-policy
+- type: GitHubOrganization
+  url: https://github.com/by-miles
+- type: LinkedIn
+  url: https://www.linkedin.com/company/bymiles
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

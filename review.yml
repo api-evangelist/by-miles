@@ -1,0 +1,299 @@
+aid: by-miles
+name: By Miles
+review:
+  question: Does By Miles expose a public, self-serve developer portal or documented API?
+  answer: false
+  date: '2026-07-25'
+  reviewer: API Evangelist
+  homeMarket: United Kingdom
+  sector: Insurance
+  tier: insurtech-dtc
+  gated: true
+  status: built-stub
+findings:
+  summary: |
+    By Miles publishes no public API surface of any kind. Every first-party
+    developer hostname was probed on 2026-07-25 and none resolved to a real
+    self-serve developer portal: developer.bymiles.co.uk and
+    developers.bymiles.co.uk do not resolve at all (curl exit 000, no DNS),
+    /developers, /developer and /integrations return 404, /api returns 502,
+    and the only two hosts that answer — api.bymiles.co.uk and
+    docs.bymiles.co.uk — are both closed. api.bymiles.co.uk is an AWS API
+    Gateway that returns HTTP 403 {"message":"Forbidden"} with an
+    x-amzn-errortype: ForbiddenException header on every path tried, i.e. the
+    private backend for the By Miles consumer mobile app, not a documented
+    product API. docs.bymiles.co.uk is an AWS CloudFront distribution behind
+    signed URLs, returning HTTP 403 with
+    <Code>MissingKey</Code><Message>Missing Key-Pair-Id query parameter or
+    cookie value</Message> — private document delivery (policy documents),
+    not API reference docs. The one live "partner" surface,
+    https://www.bymiles.co.uk/partners (HTTP 200), is a marketing and press
+    page whose entire integration mechanism is an email address,
+    partnerships@bymiles.co.uk. There is no login-walled agent portal either,
+    because By Miles is direct-to-consumer.
+
+    The correct reading of this company is that it is an API CONSUMER, not an
+    API producer. Two consumption relationships are documented and real.
+    First, in January 2020 By Miles became the first UK insurtech directly
+    authorised by the Financial Conduct Authority under the Open Banking /
+    PSD2 regime, holding AISP (account information) and PISP (payment
+    initiation) permissions, in order to consume UK Open Banking APIs for
+    payment collection, affordability and identity verification. Second, its
+    "connect" trackerless policies read odometer data from vehicle
+    manufacturers' connected-car platforms — the customer links a Tesla, Ford
+    or Mercedes-Benz account and By Miles pulls mileage from the OEM API. By
+    Miles appears as a customer success story on developer.mercedes-benz.com,
+    which is the OEM's developer portal, not one of its own. Neither
+    relationship is exposed outward: nothing By Miles consumes is re-published
+    as a documented API for third parties.
+
+    Corporate context matters for anyone reading this record later. By Miles
+    was acquired by Direct Line Group in April 2023, and after Aviva acquired
+    Direct Line Group the brand was wound down. The homepage carries the
+    banner "We're no longer offering quotes for new customers", and By Miles
+    confirmed it would not offer renewal quotes to existing customers from
+    6 January 2026. Existing policies run to expiry, serviced through the
+    mobile app and web dashboard. Any latent chance of a future partner API
+    from this brand is therefore effectively closed.
+  developerPortal:
+    exists: false
+    url: ''
+    confirmed: false
+    verdict: >-
+      No developer portal in any of the three categories. Not (a) a self-serve
+      portal, not (b) a partner/agent login wall, not (c) an innovation
+      marketing page. The nearest thing is a press/partnerships marketing page
+      with an email address.
+  probes:
+    - url: https://bymiles.co.uk/
+      status: 200
+      note: Redirects to https://www.bymiles.co.uk/ — marketing site, WordPress. Banner states new-customer quotes are closed.
+    - url: https://developer.bymiles.co.uk/
+      status: 000
+      note: Does not resolve (no DNS / no connection).
+    - url: https://developers.bymiles.co.uk/
+      status: 000
+      note: Does not resolve (no DNS / no connection).
+    - url: https://docs.bymiles.co.uk/
+      status: 403
+      note: >-
+        AWS CloudFront signed-URL distribution. Body:
+        <Code>MissingKey</Code><Message>Missing Key-Pair-Id query parameter or
+        cookie value</Message>. Private document delivery, not API docs.
+    - url: https://api.bymiles.co.uk/
+      status: 403
+      note: >-
+        AWS API Gateway. Body {"message":"Forbidden"} with
+        x-amzn-errortype: ForbiddenException. Private mobile-app backend.
+    - url: https://bymiles.co.uk/developers
+      status: 404
+    - url: https://bymiles.co.uk/developer
+      status: 404
+    - url: https://bymiles.co.uk/api
+      status: 502
+    - url: https://bymiles.co.uk/integrations
+      status: 404
+    - url: https://www.bymiles.co.uk/partners
+      status: 200
+      note: Marketing/press page. Integration path is the email partnerships@bymiles.co.uk. No API, no docs, no login.
+    - url: https://www.bymiles.co.uk/insure/partnerships/
+      status: 404
+      note: Listed in page-sitemap.xml but no longer served.
+    - url: https://www.bymiles.co.uk/openapi.json
+      status: 404
+    - url: https://www.bymiles.co.uk/swagger.json
+      status: 404
+    - url: https://api.bymiles.co.uk/openapi.json
+      status: 403
+    - url: https://api.bymiles.co.uk/swagger.json
+      status: 403
+    - url: https://api.bymiles.co.uk/api-docs
+      status: 403
+    - url: https://api.bymiles.co.uk/v1/openapi.json
+      status: 403
+    - url: https://api.bymiles.co.uk/graphql
+      status: 403
+    - url: https://www.bymiles.co.uk/graphql
+      status: 404
+    - url: https://www.bymiles.co.uk/.well-known/openid-configuration
+      status: 404
+    - url: https://api.bymiles.co.uk/.well-known/openid-configuration
+      status: 403
+    - url: https://www.bymiles.co.uk/.well-known/oauth-authorization-server
+      status: 404
+    - url: https://www.bymiles.co.uk/.well-known/security.txt
+      status: 404
+    - url: https://www.bymiles.co.uk/robots.txt
+      status: 200
+      note: 'Only two Disallow rules: /insure/author and /docs/policy-handbook. No developer or API paths.'
+    - url: https://www.bymiles.co.uk/sitemap.xml
+      status: 200
+      note: Seven child sitemaps (post, page, help, partnerships, category, post_tag, collections). No developer or API URLs in any of them; partnerships-sitemap.xml is empty.
+    - url: https://help.bymiles.co.uk/hc/en-us
+      status: 403
+      note: >-
+        Zendesk help centre. HTML 403s to non-browser user agents, but the
+        public Zendesk API at
+        https://help.bymiles.co.uk/api/v2/help_center/en-us/articles.json
+        returned HTTP 200 with 100 customer-support articles. This is a
+        consumer help centre (Miles Tracker setup, connecting a Tesla/Ford
+        account, claims), not developer documentation.
+    - url: https://github.com/by-miles
+      status: 200
+      note: >-
+        Real engineering org. Public repos are hiring exercises and CI
+        tooling (bymiles-skills-assessment, bymiles-pipeline-trigger,
+        aws-codebuild-run-build fork, action-owasp-dependecy-track-check,
+        sse-tech-task). No API specifications, no SDKs, no client libraries.
+  openapi:
+    harvested: false
+    specsCount: 0
+    files: []
+    note: >-
+      No OpenAPI, Swagger, AsyncAPI, JSON Schema or .proto artifact of any
+      kind was found. Every candidate path either 404s on the marketing host
+      or 403s behind the private API Gateway. The openapi/ directory is
+      deliberately omitted from this repo because nothing real exists to put
+      in it.
+  acord:
+    posture: no ACORD reference found
+    evidence: >-
+      Searched the By Miles website (site search and sitemap), the Zendesk
+      help centre article index, and the open web for ACORD, AL3, ACORD XML,
+      ACORD certified and NGDS in connection with By Miles. Nothing returned.
+      This is the expected result for a UK direct-to-consumer motor insurtech:
+      ACORD AL3 and the IVANS agency-download rails are a North American
+      agency-management phenomenon, and the UK's equivalent market-wide data
+      plumbing is the London Market's Blueprint Two / PPL / Whitespace stack,
+      which serves brokers and syndicates in the subscription market and has
+      no bearing on a personal-lines DTC motor product. By Miles sat entirely
+      outside both.
+  insuranceVerbs:
+    quote:
+      exposed: false
+      note: >-
+        Quoting was a first-party web and app funnel only, never an API. It is
+        now switched off entirely — the site states new-customer quotes have
+        ceased and renewal quotes ended 6 January 2026.
+    bind:
+      exposed: false
+      note: Bind was consumer self-service in the By Miles funnel; no API.
+    issue:
+      exposed: false
+      note: Policy issue and servicing happen in the By Miles mobile app and web dashboard against the private api.bymiles.co.uk backend.
+    fnol:
+      exposed: false
+      note: >-
+        First notice of loss is by phone and in-app 24-hour claims support.
+        No claims or FNOL API is documented.
+    audience: consumer-facing only; no agent-facing or partner-facing API tier exists
+  auth:
+    publicScheme: none
+    note: >-
+      No public authentication scheme is documented because there is no public
+      API. The private api.bymiles.co.uk AWS API Gateway rejects anonymous
+      requests with a 403 ForbiddenException before revealing any scheme, and
+      neither /.well-known/openid-configuration nor
+      /.well-known/oauth-authorization-server is served on the marketing host
+      (404) or the API host (403).
+    consumedSchemes:
+      - scheme: OAuth2 authorization-code (UK Open Banking / FAPI)
+        role: consumer
+        note: >-
+          By Miles held FCA AISP and PISP authorisation from January 2020 —
+          the first UK insurtech to do so — consuming third-party bank Open
+          Banking APIs. It is a TPP on those rails, not a provider of them.
+      - scheme: OEM connected-car account linking (OAuth-style consent)
+        role: consumer
+        note: >-
+          Trackerless "connect" policies read mileage after the customer links
+          a Tesla, Ford or Mercedes-Benz account. By Miles is featured as a
+          customer on developer.mercedes-benz.com. Again a consumer of someone
+          else's developer portal.
+  webhooks:
+    exists: false
+    asyncapi: false
+    note: No event catalogue, no webhook documentation, no AsyncAPI. Absence is the finding.
+  postman:
+    exists: false
+    note: No By Miles-published public Postman workspace or collection found.
+  graphql:
+    exists: false
+    note: >-
+      /graphql 404s on the marketing host and 403s behind the private API
+      Gateway. No SDL could be introspected and none was fabricated.
+  grpc:
+    exists: false
+    note: No published .proto files.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.bymiles.co.uk
+      documented: false
+      public: false
+      note: Private AWS API Gateway serving the By Miles consumer mobile app. Returns 403 ForbiddenException anonymously. Recorded because it was confirmed live, NOT because it is a usable API.
+    - protocol: REST
+      scheme: https
+      baseURL: https://help.bymiles.co.uk/api/v2
+      documented: false
+      public: true
+      note: Generic Zendesk Help Center API exposed by the vendor, not a By Miles product API. Returned 200 with support articles. Not counted as an API By Miles publishes.
+    - protocol: GraphQL
+      documented: false
+      note: None found.
+    - protocol: WebSocket
+      documented: false
+      note: None found.
+  corporateStatus:
+    owner: Aviva plc (via Direct Line Group)
+    acquired: Direct Line Group acquired By Miles in April 2023
+    windDown: >-
+      Following Aviva's acquisition of Direct Line Group, the By Miles brand is
+      being phased out. New-business quoting has stopped and renewal quotes to
+      existing customers ceased 6 January 2026. Existing policies run to expiry.
+sources:
+  - url: https://www.bymiles.co.uk/
+    type: Website
+    status: 200
+    note: Product model (fixed annual parked-car premium plus per-mile rate), Miles Tracker OBD-II device, connected-car trackerless option, and the "no longer offering quotes for new customers" banner. No API, developer or integration mention anywhere on the homepage.
+  - url: https://www.bymiles.co.uk/partners
+    type: Partners
+    status: 200
+    note: Press and partnership marketing page. Sole integration mechanism is partnerships@bymiles.co.uk. No API references.
+  - url: https://help.bymiles.co.uk/api/v2/help_center/en-us/articles.json
+    type: SupportCenter
+    status: 200
+    note: Zendesk help centre index, 100 articles. Confirms Miles Tracker, connect policies, and Tesla/Ford account-linking as consumer features. Nothing developer-facing.
+  - url: https://www.bymiles.co.uk/robots.txt
+    type: Website
+    status: 200
+    note: Confirms no developer or API paths are known to the site.
+  - url: https://www.bymiles.co.uk/sitemap.xml
+    type: Website
+    status: 200
+    note: Full sitemap tree enumerated; no developer, API or documentation URLs.
+  - url: https://github.com/by-miles
+    type: GitHubOrganization
+    status: 200
+    note: Engineering org with hiring exercises and CI actions only. No specs or SDKs.
+  - url: https://developer.mercedes-benz.com/success-stories/by_miles
+    type: Documentation
+    note: Mercedes-Benz's own developer portal features By Miles as a customer of the OEM connected-vehicle API — evidence of By Miles as API consumer, not producer.
+  - url: https://www.insuranceage.co.uk/broker/4402426/by-miles-receives-fca-open-banking-licence
+    type: Article
+    note: January 2020 — By Miles becomes the first UK insurtech directly FCA-authorised under Open Banking, with AISP and PISP permissions.
+  - url: https://coverager.com/by-miles-winds-down/
+    type: Article
+    note: By Miles winds down under Aviva-owned Direct Line Group; no renewal quotes from 6 January 2026.
+actions:
+  apisYmlUpdated: true
+  apisListed: 0
+  openapiDirectoryCreated: false
+  reason: >-
+    apis[] is deliberately empty. By Miles publishes no documented public API,
+    so listing anything would be fabrication. This is a correct built-stub
+    outcome for a UK direct-to-consumer motor insurtech: the company was a
+    sophisticated consumer of other people's APIs (UK Open Banking as an
+    FCA-authorised AISP/PISP, and OEM connected-car mileage feeds from Tesla,
+    Ford and Mercedes-Benz) and never a producer of them. Recording that
+    asymmetry honestly is the value of this record.
