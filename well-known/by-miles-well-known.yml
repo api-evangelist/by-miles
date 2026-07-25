@@ -1,0 +1,49 @@
+generated: '2026-07-25'
+method: probed
+source: live probes of the By Miles marketing host and the private API host
+note: >-
+  Nothing is served under /.well-known/ on any By Miles host. Every path below
+  either 404s on the marketing host or is swallowed by the private AWS API
+  Gateway's blanket 403 ForbiddenException. Recorded absence, not a gap in the
+  probe — no WellKnown pointer is wired into apis.yml because no document exists.
+  Notably a full responsible-disclosure policy IS published as HTML at
+  https://www.bymiles.co.uk/security-vulnerability-reporting-policy, so an RFC
+  9116 security.txt would be a one-line addition for this provider.
+hosts:
+- host: https://www.bymiles.co.uk
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://bymiles.co.uk
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://api.bymiles.co.uk
+  note: >-
+    Private AWS API Gateway. Returns 403 ForbiddenException with
+    x-amzn-errortype header on every path, so a 403 here is the gateway
+    default and is NOT evidence that the document exists.
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+related:
+- kind: disclosure-policy
+  url: https://www.bymiles.co.uk/security-vulnerability-reporting-policy
+  status: 200
+  note: 'The content a security.txt Policy: field would point at, published as HTML instead.'
+- kind: pgp-public-key
+  url: https://www.bymiles.co.uk/static/bymilesvulnerabilitypgp.asc
+  status: 200
+  note: 'The content a security.txt Encryption: field would point at.'

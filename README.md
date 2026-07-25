@@ -86,12 +86,42 @@ acquisition of Direct Line Group, the brand is being wound down: new-business
 quoting has stopped and renewal quotes to existing customers ceased **6 January
 2026**. Existing policies run to expiry.
 
+### Security posture
+
+Despite publishing no API, By Miles does publish a real **responsible-disclosure
+programme**: reports go to `vulnerability@bymiles.co.uk`, a PGP public key is
+published for encrypted reports, the response target is 5 days, and confirmed
+first reporters get swag, a place in the Hall of Fame and — for severe findings
+— a discretionary cash award. There is no HackerOne/Bugcrowd/Intigriti listing.
+Its ISMS policy (v2.1, 20 May 2026) states **alignment to the scope of ISO
+27001** — alignment, not a published certificate — alongside UK GDPR and FCA
+commitments. By Miles Ltd is FCA-authorised under **Firm Reference Number
+773046**. Notably no RFC 9116 `security.txt` is served, even though all the
+content one would point at is already published.
+
+## Artifacts in this repository
+
+- `security/by-miles-vulnerability-disclosure.yml` — the responsible-disclosure programme.
+- `security/by-miles-domain-security.yml` — TLS/HSTS/DNSSEC/CAA/SPF/DMARC probes across all four live hosts.
+- `conformance/by-miles-conformance.yml` — regulatory and standards posture, producer vs consumer role.
+- `lifecycle/by-miles-lifecycle.yml` — company lifecycle and the dated wind-down (no API lifecycle exists).
+- `well-known/by-miles-well-known.yml` — recorded absence of every `/.well-known/` document.
+- `llms/by-miles-llms.txt` — agent-facing summary, generated from this record.
+
 ## Links
 
 - [Website](https://www.bymiles.co.uk/)
 - [Blog](https://www.bymiles.co.uk/insure/magazine/)
-- [Support Center](https://help.bymiles.co.uk/hc/en-us)
+- [Support](https://help.bymiles.co.uk/hc/en-us)
+- [Login](https://dashboard.bymiles.co.uk/account/login)
 - [Partners](https://www.bymiles.co.uk/partners)
+- [Security vulnerability reporting policy](https://www.bymiles.co.uk/security-vulnerability-reporting-policy)
+- [Information security policy](https://www.bymiles.co.uk/information-security)
+- [Terms of Business](https://www.bymiles.co.uk/terms-of-business)
+- [Terms of Use](https://www.bymiles.co.uk/terms)
 - [Privacy Policy](https://www.bymiles.co.uk/privacy-policy)
+- [Press](https://www.bymiles.co.uk/press)
 - [GitHub Organization](https://github.com/by-miles)
 - [LinkedIn](https://www.linkedin.com/company/bymiles)
+- [Twitter](https://www.twitter.com/bymiles)
+- [Facebook](https://www.facebook.com/gobymiles)

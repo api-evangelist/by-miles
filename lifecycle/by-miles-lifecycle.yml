@@ -1,0 +1,87 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  https://help.bymiles.co.uk/hc/en-us/articles/31682833887517-By-Miles-2026-Company-Update
+  and the By Miles homepage banner
+note: >-
+  This is a COMPANY lifecycle record, not an API lifecycle record. By Miles
+  publishes no public API, so there is no versioning scheme, no deprecation
+  policy, no Sunset/Deprecation header contract and no API status page to
+  capture. What exists instead is a dated, publicly announced wind-down of the
+  brand itself, which is the material lifecycle fact for anyone evaluating this
+  provider.
+versioning:
+  scheme: none
+  current: null
+  docs: null
+  evidence: >-
+    No public API, so no version identifier is exposed. The private
+    api.bymiles.co.uk AWS API Gateway returns 403 ForbiddenException on every
+    path including /v1/openapi.json.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  evidence: >-
+    No RFC 8594 Sunset/Deprecation header contract, and no API deprecation
+    policy page. The company wind-down notice below is consumer prose, not an
+    API deprecation policy, and is therefore deliberately NOT wired as a
+    Deprecation pointer.
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  evidence: >-
+    status.bymiles.co.uk does not resolve (curl exit 000, no DNS). No
+    Statuspage.io, Better Stack or equivalent status host was found.
+deprecated_operations: []
+company_lifecycle:
+  launched: '2017'
+  founded: '2016'
+  acquired:
+    by: Direct Line Group
+    date: '2023-04'
+  parent_change:
+    by: Aviva plc
+    note: Aviva acquired Direct Line Group; By Miles is now part of the Aviva group of companies.
+  wind_down:
+    announced: '2025-11-10'
+    new_business_quotes_ceased: '2025-11-26'
+    renewal_quotes_ceased: '2026-01-06'
+    existing_policies: run to expiry, serviced through the mobile app and web dashboard
+    reason: >-
+      "By Miles is part of the Direct Line Group, which has recently gone through
+      a change of ownership and is now part of Aviva. A change in strategy means
+      they're focusing investment on other brands - such as Aviva, Direct Line
+      and Churchill."
+    source: https://help.bymiles.co.uk/hc/en-us/articles/31682833887517-By-Miles-2026-Company-Update
+    homepage_banner: We're no longer offering quotes for new customers.
+  implication: >-
+    Any latent chance of a future partner or public API from this brand is
+    effectively closed. Treat this record as historical.
+support_channels:
+- type: HelpCenter
+  url: https://help.bymiles.co.uk/hc/en-us
+- type: Email
+  url: mailto:support@bymiles.co.uk
+- type: Email
+  url: mailto:hello@bymiles.co.uk
+- type: LiveChat
+  note: Live chat, weekdays plus weekends and bank holidays, 10am - 4pm UK time.
+document_versions:
+- document: Information Security Management System policy
+  version: '2.1'
+  updated: '2026-05-20'
+  url: https://www.bymiles.co.uk/information-security
+- document: Terms of business
+  updated: '2026-06-09'
+  url: https://www.bymiles.co.uk/terms-of-business
+- document: Privacy notice
+  updated: '2026-06-08'
+  url: https://www.bymiles.co.uk/privacy-notice
+- document: Terms of use
+  updated: '2018-02-22'
+  url: https://www.bymiles.co.uk/terms
+- document: Security vulnerability reporting policy
+  updated: '2020-10-15'
+  url: https://www.bymiles.co.uk/security-vulnerability-reporting-policy

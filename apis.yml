@@ -39,20 +39,46 @@ modified: '2026-07-25'
 specificationVersion: '0.19'
 apis: []
 common:
+- type: DomainSecurity
+  url: security/by-miles-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/by-miles-vulnerability-disclosure.yml
+- type: Security
+  url: https://www.bymiles.co.uk/security-vulnerability-reporting-policy
+- type: Compliance
+  url: https://www.bymiles.co.uk/information-security
+- type: Conformance
+  url: conformance/by-miles-conformance.yml
+- type: Lifecycle
+  url: lifecycle/by-miles-lifecycle.yml
+- type: LLMsTxt
+  url: llms/by-miles-llms.txt
 - type: Website
   url: https://www.bymiles.co.uk/
 - type: Blog
   url: https://www.bymiles.co.uk/insure/magazine/
-- type: SupportCenter
+- type: Support
   url: https://help.bymiles.co.uk/hc/en-us
+- type: Login
+  url: https://dashboard.bymiles.co.uk/account/login
 - type: Partners
   url: https://www.bymiles.co.uk/partners
+- type: TermsOfService
+  url: https://www.bymiles.co.uk/terms-of-business
+- type: TermsOfUse
+  url: https://www.bymiles.co.uk/terms
 - type: PrivacyPolicy
   url: https://www.bymiles.co.uk/privacy-policy
+- type: Press
+  url: https://www.bymiles.co.uk/press
 - type: GitHubOrganization
   url: https://github.com/by-miles
 - type: LinkedIn
   url: https://www.linkedin.com/company/bymiles
+- type: Twitter
+  url: https://www.twitter.com/bymiles
+- type: Facebook
+  url: https://www.facebook.com/gobymiles
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

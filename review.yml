@@ -285,6 +285,46 @@ sources:
   - url: https://coverager.com/by-miles-winds-down/
     type: Article
     note: By Miles winds down under Aviva-owned Direct Line Group; no renewal quotes from 6 January 2026.
+  - url: https://www.bymiles.co.uk/security-vulnerability-reporting-policy
+    type: Security
+    status: 200
+    note: >-
+      Found on the 2026-07-25 enrichment round. A full responsible-disclosure
+      policy — reports to vulnerability@bymiles.co.uk, PGP public key published
+      at /static/bymilesvulnerabilitypgp.asc, 5-day response target, researcher
+      hall of fame and discretionary cash awards for severe findings. No
+      HackerOne/Bugcrowd/Intigriti listing. Captured in
+      security/by-miles-vulnerability-disclosure.yml.
+  - url: https://www.bymiles.co.uk/information-security
+    type: Compliance
+    status: 200
+    note: >-
+      Information Security Management System policy PDF, version 2.1, dated
+      20 May 2026 and signed by CEO Maddy Howlett. States alignment to the scope
+      of ISO 27001 (alignment, not a published certificate), commitment to GDPR
+      and FCA requirements, and internal plus external annual audits of the
+      Business Management System. Names the vulnerability reporting policy URL.
+  - url: https://help.bymiles.co.uk/hc/en-us/articles/31682833887517-By-Miles-2026-Company-Update
+    type: Article
+    status: 200
+    note: >-
+      The primary wind-down source, with exact dates — new-customer quotes
+      stopped 26 November 2025, renewal quotes stopped 6 January 2026, existing
+      policies run to expiry. Reason given is Aviva's change of strategy after
+      acquiring Direct Line Group. Captured in lifecycle/by-miles-lifecycle.yml.
+  - url: https://www.bymiles.co.uk/terms-of-business
+    type: TermsOfService
+    status: 200
+    note: >-
+      Updated 9 June 2026. Confirms By Miles Ltd is an FCA-authorised insurance
+      intermediary, Firm Reference Number 773046, company number 09498559, and
+      is part of the Direct Line group within the Aviva group.
+  - url: https://dashboard.bymiles.co.uk/account/login
+    type: Login
+    status: 200
+    note: >-
+      The member web dashboard login. Consumer-facing only — not a partner or
+      developer portal, and no API is exposed behind it.
 actions:
   apisYmlUpdated: true
   apisListed: 0

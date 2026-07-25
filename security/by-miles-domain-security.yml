@@ -1,0 +1,48 @@
+generated: '2026-07-25'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml hosts plus the confirmed-live By Miles subdomains recorded in review.yml
+hosts:
+- host: www.bymiles.co.uk
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec 10 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 15552000
+  note: Marketing site. HSTS max-age is 180 days, below the 1-year preload threshold.
+- host: api.bymiles.co.uk
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 26 23:59:59 2026 GMT
+  hsts: false
+  http_status: 403
+  note: >-
+    Private AWS API Gateway serving the By Miles consumer mobile app. Returns
+    403 ForbiddenException anonymously and emits no Strict-Transport-Security
+    header. Not a public API.
+- host: help.bymiles.co.uk
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  1 23:48:52 2026 GMT
+  hsts: true
+  hsts_max_age: 259200
+  http_status: 302
+  note: Zendesk-hosted help centre. HSTS is vendor-set at 3 days, includeSubDomains.
+- host: docs.bymiles.co.uk
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan  7 23:59:59 2027 GMT
+  hsts: false
+  http_status: 403
+  note: >-
+    AWS CloudFront signed-URL distribution for private policy documents
+    (MissingKey / Key-Pair-Id). Not API documentation.
+domains:
+- domain: bymiles.co.uk
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+  note: >-
+    DMARC is at the strongest policy (p=reject). No CAA records are published
+    and DNSSEC is not enabled on the zone.

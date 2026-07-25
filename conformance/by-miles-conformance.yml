@@ -1,0 +1,94 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  By Miles published policy documents (information security policy PDF, terms of
+  business, privacy notice) plus the API-surface probes recorded in review.yml
+note: >-
+  By Miles publishes no API, so every producer-side API standard below is
+  recorded as not conforming — that is an accurate reading of a company that was
+  a sophisticated API CONSUMER and never a producer. The standards it does meet
+  are regulatory and information-security frameworks, published as policy
+  documents rather than as machine-readable artifacts.
+standards:
+- id: iso-27001
+  conforms: partial
+  status: aligned-not-certified
+  evidence: >-
+    Information Security Management System policy v2.1 (20 May 2026, signed by
+    CEO Maddy Howlett) states "Our alignment to the scope of ISO 27001 within our
+    Information Security Management System (ISMS) implementation provides the
+    framework and controls..." — alignment to the ISO 27001 scope, with internal
+    and external annual audits of the Business Management System. No ISO 27001
+    certificate or certificate number is published.
+  source: https://www.bymiles.co.uk/information-security
+- id: uk-gdpr
+  conforms: true
+  evidence: >-
+    Privacy notice (updated 8 June 2026) is written against the Data Protection
+    Act 2018, the UK GDPR and PECR, and documents subject access, rectification,
+    objection to processing, profiling and automated decision-making. By Miles
+    Ltd is registered with the Information Commissioner's Office.
+  source: https://www.bymiles.co.uk/privacy-notice
+- id: fca-authorisation
+  conforms: true
+  evidence: >-
+    By Miles Ltd is an insurance intermediary authorised and regulated by the
+    Financial Conduct Authority, Firm Reference Number 773046, permitted to
+    introduce, advise, arrange, deal as agent in and assist in the administration
+    of non-investment insurance contracts. Company number 09498559.
+  source: https://register.fca.org.uk/
+- id: psd2-open-banking
+  conforms: true
+  role: consumer
+  evidence: >-
+    In January 2020 By Miles became the first UK insurtech directly authorised by
+    the FCA under the Open Banking / PSD2 regime, holding AISP (account
+    information) and PISP (payment initiation) permissions in order to CONSUME UK
+    bank Open Banking APIs. By Miles is a TPP on those rails; it does not publish
+    Open Banking APIs of its own.
+  source: https://www.insuranceage.co.uk/broker/4402426/by-miles-receives-fca-open-banking-licence
+- id: responsible-disclosure
+  conforms: true
+  evidence: >-
+    Published security vulnerability reporting policy with a dedicated mailbox
+    (vulnerability@bymiles.co.uk), a PGP public key, a 5-day response target, a
+    researcher hall of fame and discretionary cash awards.
+  source: https://www.bymiles.co.uk/security-vulnerability-reporting-policy
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: >-
+    /.well-known/security.txt returns 404 on www.bymiles.co.uk and 403 on
+    api.bymiles.co.uk, despite a full disclosure policy being published as HTML.
+- id: acord
+  conforms: false
+  evidence: >-
+    No ACORD, ACORD AL3, ACORD XML or NGDS reference found on the By Miles site,
+    sitemap, help centre article index or the open web. Expected for a UK
+    direct-to-consumer personal-lines motor insurtech — ACORD AL3 and the IVANS
+    agency-download rails are a North American agency-management phenomenon.
+- id: openapi
+  conforms: false
+  evidence: >-
+    No OpenAPI or Swagger document at any probed path on the marketing host
+    (404) or the private API host (403). See review.yml probes.
+- id: asyncapi
+  conforms: false
+  evidence: No event catalogue, webhook documentation or AsyncAPI document exists.
+- id: oauth2
+  conforms: false
+  role: consumer
+  evidence: >-
+    No OAuth 2.0 authorization server is published (/.well-known/openid-configuration
+    and /.well-known/oauth-authorization-server both 404 on the marketing host,
+    403 on the API host). By Miles CONSUMES OAuth-style flows as an Open Banking
+    TPP and when customers link a Tesla, Ford or Mercedes-Benz connected-car
+    account.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No public API and therefore no documented error envelope.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: >-
+    No API deprecation policy or Sunset/Deprecation header support is published.
+    The brand wind-down was announced as consumer-facing prose, not as an API
+    lifecycle contract. See lifecycle/by-miles-lifecycle.yml.
