@@ -21,6 +21,17 @@ description: >-
   documentation, no OpenAPI, no Postman collection and no webhook catalogue. The only
   integration surface is a partnerships email address and a private AWS API Gateway
   host serving its own mobile app, so this record is a partner-gated stub by design.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Insurance
