@@ -38,6 +38,10 @@ accessModel:
   trial: false
   try_now: false
   public: false
+  gated: partner
+  gated_source:
+  - tag:No Public API
+  - description
   label: Unknown
   confidence: low
   source:
@@ -56,7 +60,6 @@ tags:
 - Connected Car
 - Direct to Consumer
 - Open Banking
-- No Public API
 tags_raw:
 - Insurance
 - United Kingdom
@@ -68,7 +71,6 @@ tags_raw:
 - Connected Car
 - Direct to Consumer
 - Open Banking
-- No Public API
 created: '2026-07-25'
 modified: '2026-07-25'
 specificationVersion: '0.23'
@@ -121,3 +123,5 @@ x-status: acquired
 x-acquired-by: direct-line-group
 x-acquired-year: 2023
 x-status-source: https://help.bymiles.co.uk/hc/en-us/articles/31682833887517-By-Miles-2026-Company-Update  # in run-off, not defunct: no new quotes since 2025-11-26, no renewals from 2026-01-06, existing policies still serviced (bymiles.co.uk live 2026-10-03); Aviva (owner of DLG) is winding the book down over ~18 months
+x-tags-removed:
+- No Public API
