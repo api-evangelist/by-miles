@@ -1,4 +1,4 @@
-# By Miles (by-miles)
+# By Miles
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,128 +64,52 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-By Miles is a London-based insurtech that pioneered pay-by-mile motor insurance in the United Kingdom, founded in 2016 for low-mileage drivers who cover under roughly 7,000 miles a year. Its single line of business is UK private motor (personal lines property and casualty), priced as a fixed annual premium covering the parked car plus a per-mile charge for the distance actually driven. Mileage is measured either by the OBD-II "Miles Tracker" telematics dongle or, on its "connect" trackerless policies, by pulling odometer data directly from the manufacturer's connected-car platform after the driver links a Tesla, Ford or Mercedes-Benz account.
+> **Acquired or rebranded.** This company was acquired, merged or renamed. Its API, if it still exists, is offered under another name. This profile is kept as a historical record and is not maintained or rated.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/by-miles/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/by-miles/refs/heads/main/apis.yml)
+By Miles is a London-based insurtech that pioneered pay-by-mile motor insurance in the United Kingdom, founded in 2016 for low-mileage drivers who cover under roughly 7,000 miles a year. Its single line of business is UK private motor (personal lines property and casualty), priced as a fixed annual premium covering the parked car plus a per-mile charge for the distance actually driven. Mileage is measured either by the OBD-II "Miles Tracker" telematics dongle or, on its "connect" trackerless policies, by pulling odometer data directly from the manufacturer's connected-car platform after the driver links a Tesla, Ford or Mercedes-Benz account. By Miles was acquired by Direct Line Group in April 2023 and, following Aviva's acquisition of Direct Line Group, has been wound down — it stopped quoting new business and, from 6 January 2026, stopped offering renewal quotes to existing customers. Its API posture is that of a pure API CONSUMER, not a producer: it was the first UK insurtech directly authorised by the FCA as an AISP/PISP to consume Open Banking APIs (January 2020), and it consumes OEM connected-car APIs for mileage, but it publishes no public self-serve developer portal, no reference documentation, no OpenAPI, no Postman collection and no webhook catalogue. The only integration surface is a partnerships email address and a private AWS API Gateway host serving its own mobile app, so this record is a partner-gated stub by design.
 
-## Tags
+**Areas:** Insurance · United Kingdom · Insurtech · Property and Casualty · Auto Insurance · Usage-Based Insurance · Telematics · Connected Vehicles · Direct to Consumer · Open Banking
 
-- Insurance
-- United Kingdom
-- Insurtech
-- Property and Casualty
-- Motor Insurance
-- Usage Based Insurance
-- Telematics
-- Connected Car
-- Direct to Consumer
-- Open Banking
-- No Public API
+## By Miles on APIs.io (historical record)
 
-## Timestamps
+Everything profiled for By Miles is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/by-miles/](https://apis.io/providers/by-miles/)** — or go straight to one of the APIs or properties below.
 
-- **Created:** 2026-07-25
-- **Modified:** 2026-07-25
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-**None.** By Miles publishes no public, self-serve API.
+#### Security (2)
 
-Every first-party developer hostname was probed on 2026-07-25.
-`developer.bymiles.co.uk` and `developers.bymiles.co.uk` do not resolve at all.
-`/developers`, `/developer` and `/integrations` return 404 and `/api` returns 502.
-The two hosts that do answer are both closed: `api.bymiles.co.uk` is an AWS API
-Gateway returning `403 {"message":"Forbidden"}` — the private backend for the By
-Miles consumer mobile app — and `docs.bymiles.co.uk` is a CloudFront distribution
-behind signed URLs (`MissingKey / Missing Key-Pair-Id`) used to deliver policy
-documents, not API reference docs. The only live "partner" surface,
-[https://www.bymiles.co.uk/partners](https://www.bymiles.co.uk/partners) (HTTP 200),
-is a press and marketing page whose entire integration mechanism is the email
-address `partnerships@bymiles.co.uk`.
+Authentication, trust centre, and vulnerability disclosure.
 
-No OpenAPI, Swagger, AsyncAPI, GraphQL SDL, `.proto`, Postman collection or webhook
-catalogue exists, so this repository has no `openapi/` directory.
+- [By Miles Domain Security](https://apis.io/security/by-miles/by-miles-domain-security/)
+- [By Miles Vulnerability Disclosure](https://apis.io/security/by-miles/by-miles-vulnerability-disclosure/)
 
-### An API consumer, not an API producer
+## Where to find this API
 
-The honest reading of By Miles is that it was a sophisticated **consumer** of other
-people's APIs:
-
-- **UK Open Banking.** In January 2020 By Miles became the first UK insurtech
-  directly authorised by the Financial Conduct Authority under the Open Banking /
-  PSD2 regime, holding both AISP (account information) and PISP (payment initiation)
-  permissions, in order to consume bank APIs for payment collection, affordability
-  and identity verification. It is a TPP on those rails, not a provider of them.
-- **OEM connected-car APIs.** Trackerless "connect" policies read odometer data
-  after the customer links a Tesla, Ford or Mercedes-Benz account. By Miles is
-  featured as a customer story on
-  [developer.mercedes-benz.com](https://developer.mercedes-benz.com/success-stories/by_miles)
-  — the OEM's developer portal, not one of its own.
-
-Neither relationship is exposed outward. Nothing By Miles consumes is re-published
-as a documented API for third parties.
-
-### ACORD posture
-
-**No ACORD reference found.** Searches of the By Miles website, its Zendesk help
-centre index and the open web for ACORD, AL3, ACORD XML, ACORD certified and NGDS
-returned nothing. This is expected for a UK direct-to-consumer motor insurtech:
-ACORD AL3 and the IVANS agency-download rails are a North American agency-management
-phenomenon, and the UK's market-wide data plumbing is the London Market's Blueprint
-Two / PPL / Whitespace stack, which serves brokers and syndicates in the subscription
-market. By Miles sat outside both.
-
-### Quote / bind / issue / FNOL
-
-None of the four insurance verbs is exposed as an API. Quoting and binding were a
-first-party web and app funnel; policy issue and servicing run in the mobile app and
-web dashboard against the private `api.bymiles.co.uk` backend; first notice of loss
-is by phone and in-app 24-hour claims support. The audience was consumer-facing only
-— there is no agent-facing or partner-facing API tier.
-
-### Corporate status
-
-By Miles was acquired by **Direct Line Group in April 2023**. Following Aviva's
-acquisition of Direct Line Group, the brand is being wound down: new-business
-quoting has stopped and renewal quotes to existing customers ceased **6 January
-2026**. Existing policies run to expiry.
-
-### Security posture
-
-Despite publishing no API, By Miles does publish a real **responsible-disclosure
-programme**: reports go to `vulnerability@bymiles.co.uk`, a PGP public key is
-published for encrypted reports, the response target is 5 days, and confirmed
-first reporters get swag, a place in the Hall of Fame and — for severe findings
-— a discretionary cash award. There is no HackerOne/Bugcrowd/Intigriti listing.
-Its ISMS policy (v2.1, 20 May 2026) states **alignment to the scope of ISO
-27001** — alignment, not a published certificate — alongside UK GDPR and FCA
-commitments. By Miles Ltd is FCA-authorised under **Firm Reference Number
-773046**. Notably no RFC 9116 `security.txt` is served, even though all the
-content one would point at is already published.
-
-## Artifacts in this repository
-
-- `security/by-miles-vulnerability-disclosure.yml` — the responsible-disclosure programme.
-- `security/by-miles-domain-security.yml` — TLS/HSTS/DNSSEC/CAA/SPF/DMARC probes across all four live hosts.
-- `conformance/by-miles-conformance.yml` — regulatory and standards posture, producer vs consumer role.
-- `lifecycle/by-miles-lifecycle.yml` — company lifecycle and the dated wind-down (no API lifecycle exists).
-- `well-known/by-miles-well-known.yml` — recorded absence of every `/.well-known/` document.
-- `llms/by-miles-llms.txt` — agent-facing summary, generated from this record.
-
-## Links
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.bymiles.co.uk/)
-- [Blog](https://www.bymiles.co.uk/insure/magazine/)
 - [Support](https://help.bymiles.co.uk/hc/en-us)
-- [Login](https://dashboard.bymiles.co.uk/account/login)
-- [Partners](https://www.bymiles.co.uk/partners)
-- [Security vulnerability reporting policy](https://www.bymiles.co.uk/security-vulnerability-reporting-policy)
-- [Information security policy](https://www.bymiles.co.uk/information-security)
-- [Terms of Business](https://www.bymiles.co.uk/terms-of-business)
-- [Terms of Use](https://www.bymiles.co.uk/terms)
-- [Privacy Policy](https://www.bymiles.co.uk/privacy-policy)
-- [Press](https://www.bymiles.co.uk/press)
-- [GitHub Organization](https://github.com/by-miles)
-- [LinkedIn](https://www.linkedin.com/company/bymiles)
-- [Twitter](https://www.twitter.com/bymiles)
-- [Facebook](https://www.facebook.com/gobymiles)
+- [Blog](https://www.bymiles.co.uk/insure/magazine/)
+- [Security](https://www.bymiles.co.uk/security-vulnerability-reporting-policy)
+- [Compliance](https://www.bymiles.co.uk/information-security)
+- [Terms of service](https://www.bymiles.co.uk/terms-of-business)
+- [Privacy policy](https://www.bymiles.co.uk/privacy-policy)
+- [GitHub](https://github.com/by-miles)
+
+## API Evangelist rating
+
+**Not rated** — this company is recorded as acquired or rebranded, so no score is published. If it is in fact operating, say so on this repository and it will be re-profiled.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for By Miles: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/by-miles/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
